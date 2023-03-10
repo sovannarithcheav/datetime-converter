@@ -1,6 +1,7 @@
 package kh.org.soramitsu.jpa_sort_util.annotation
 
-interface JpaSortMappingResource {
+interface JpaSortMappingResource<T> {
+
     fun getSource(): MutableMap<String, String>
 
     fun getInternalSortKeyName(name: String): String? {

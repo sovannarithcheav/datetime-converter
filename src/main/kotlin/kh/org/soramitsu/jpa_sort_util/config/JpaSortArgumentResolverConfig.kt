@@ -11,11 +11,15 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 @Configuration
 @Import(AvailableSortFilter::class, JpaSortArgumentResolver::class)
 open class JpaSortArgumentResolverConfig {
+    companion object {
+        lateinit var APP_CONTEXT: ApplicationContext
+    }
 
     @Bean
     open fun corsConfigurer(applicationContext: ApplicationContext): WebMvcConfigurer {
         return object : WebMvcConfigurer {
             override fun addArgumentResolvers(resolvers: MutableList<HandlerMethodArgumentResolver>) {
+                APP_CONTEXT = applicationContext
                 resolvers.add(JpaSortArgumentResolver(applicationContext))
                 resolvers.add(PageableHandlerMethodArgumentResolver(JpaSortArgumentResolver(applicationContext)))
                 super.addArgumentResolvers(resolvers)

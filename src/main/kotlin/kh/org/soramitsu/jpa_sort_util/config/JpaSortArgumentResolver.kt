@@ -36,7 +36,7 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
         val jpaSortMapping = parameter.method?.annotations?.firstOrNull { it is JpaSortMapping }
         val directionParameter = if (jpaSortMapping != null) {
             val map = (jpaSortMapping as JpaSortMapping).value
-            val resource = applicationContext.getBean(map.javaObjectType) as JpaSortMappingResource
+            val resource = applicationContext.getBean(map.javaObjectType) as JpaSortMappingResource<*>
             val mapping = resource.getSource()
             RequestContextHolder.currentRequestAttributes()
                 .setAttribute(AVAILABLE_SORT_KEYS, mapping.keys.joinToString { s -> s }, 0)
