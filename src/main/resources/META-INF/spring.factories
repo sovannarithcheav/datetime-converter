@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+kh.org.soramitsu.jpa_sort_util.config.JpaSortArgumentResolverConfig
