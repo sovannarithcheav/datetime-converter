@@ -30,6 +30,36 @@ dependencies {
   	implementation("kh.org.soramitsu:jpa-sort-util:${property("jpa-sort-util.version")}")
 }
 ```
+3. Create sorting mapper object
+```kotlin
+import kh.org.nbc.hrm.system_setting.model.TypeOfSeniority
+import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMappingResource
+import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMappingSupport
+import org.springframework.stereotype.Component
+
+/**
+ * Represent to model [TypeOfSeniority]
+ * @see kh.org.nbc.hrm.system_setting.response.TypeOfSeniorityRes
+ * Draft: [TypeOfSeniority]::class.java.declaredFields.map { it.name }
+ *
+ *
+ */
+@Component
+class TypeOfSenioritySortMapping : JpaSortMappingResource<TypeOfSeniority>, JpaSortMappingSupport<TypeOfSeniority>()
+```
+4. Use sorting mapper object on Rest Controller getting endpoint
+```kotlin
+    @GetMapping
+    @JpaSortMapping(value = TypeOfSenioritySortMapping::class)
+    fun findAll(
+        filter: TypeOfSeniorityReq.Filter?,
+        @SortDefault(sort = ["createdAt"], direction = Sort.Direction.DESC) pageable: Pageable
+    ): ResponseEntity<ResponseWrapper>? {
+        return ok(typeOfSeniorityService.findAll(filter, pageable))
+    }
+```
+
+
 
 <!-- variables -->
 
