@@ -45,8 +45,18 @@ import org.springframework.stereotype.Component
  *
  */
 @Component
-class TypeOfSenioritySortMapping : JpaSortMappingResource<TypeOfSeniority>, JpaSortMappingSupport<TypeOfSeniority>()
+class TypeOfSenioritySortMapping : JpaSortMappingResource<TypeOfSeniority>, JpaSortMappingSupport<TypeOfSeniority>() {
+
+    // You can use default JpaSortMappingSupport.getSource() or override it like below
+    override fun getSource(): MutableMap<String, String> {
+        val map = mutableMapOf("name" to "nameKH")
+        super.getSource().putAll(map)
+        return super.getSource()
+    }
+
+}
 ```
+
 4. Use sorting mapper object on Rest Controller getting endpoint
 ```kotlin
     @GetMapping
