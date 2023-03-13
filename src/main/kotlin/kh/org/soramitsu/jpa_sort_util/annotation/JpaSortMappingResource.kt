@@ -5,7 +5,7 @@ import java.lang.reflect.ParameterizedType
 
 interface JpaSortMappingResource<T> {
 
-    fun getSource(): MutableMap<String, String>
+    fun getSource(): MutableMap<String, String> = getDefaultPropertiesSorting()
 
     fun getInternalSortKeyName(name: String): String? {
         val key = this.getSource()[name]
