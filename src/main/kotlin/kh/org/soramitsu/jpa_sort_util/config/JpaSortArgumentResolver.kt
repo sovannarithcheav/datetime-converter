@@ -1,9 +1,9 @@
 package kh.org.soramitsu.jpa_sort_util.config
 
-import kh.org.soramitsu.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
 import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMapping
 import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMappingResource
 import kh.org.soramitsu.jpa_sort_util.config.SortOrderParser.Companion.parse
+import kh.org.soramitsu.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.MethodParameter
@@ -14,10 +14,10 @@ import org.springframework.web.bind.support.WebDataBinderFactory
 import org.springframework.web.context.request.NativeWebRequest
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.method.support.ModelAndViewContainer
-import java.util.*
 
 @Configuration
-open class JpaSortArgumentResolver(private val applicationContext: ApplicationContext) : SortHandlerMethodArgumentResolver() {
+open class JpaSortArgumentResolver(private val applicationContext: ApplicationContext) :
+    SortHandlerMethodArgumentResolver() {
 
     override fun setPropertyDelimiter(propertyDelimiter: String) {
         super.setPropertyDelimiter(getPropertyDelimiter())
@@ -53,7 +53,7 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
         } else return getDefaultFromAnnotationOrFallback(parameter)
         return if (directionParameter.size == 1 && !StringUtils.hasText(directionParameter[0])) {
             getDefaultFromAnnotationOrFallback(parameter)
-        } else parseParameterIntoSort(directionParameter)
+        } else super.resolveArgument(parameter, mavContainer, webRequest, binderFactory)
     }
 
     open fun parseParameterIntoSort(source: List<String>): Sort {
