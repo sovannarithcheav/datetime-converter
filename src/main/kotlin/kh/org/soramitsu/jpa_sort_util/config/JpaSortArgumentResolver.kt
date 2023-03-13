@@ -34,7 +34,7 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
         binderFactory: WebDataBinderFactory?
     ): Sort {
         val jpaSortMapping = parameter.method?.annotations?.firstOrNull { it is JpaSortMapping }
-        val directionParameter = if (jpaSortMapping != null) {
+        if (jpaSortMapping != null) {
             val map = (jpaSortMapping as JpaSortMapping).value
             val resource = applicationContext.getBean(map.javaObjectType) as JpaSortMappingResource<*>
             val mapping = resource.getSource()
@@ -44,16 +44,18 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
                 webRequest.getParameterValues(getSortParameter(parameter)) ?: return getDefaultFromAnnotationOrFallback(
                     parameter
                 )
-            result.map {
+            val directionParameter = result.map {
                 if (it.contains(propertyDelimiter)) {
                     val splits = it.split(propertyDelimiter)
                     (resource.getInternalSortKeyName(splits[0]) ?: it) + propertyDelimiter + splits[1]
                 } else resource.getInternalSortKeyName(it) ?: it
             }
-        } else return getDefaultFromAnnotationOrFallback(parameter)
-        return if (directionParameter.size == 1 && !StringUtils.hasText(directionParameter[0])) {
-            getDefaultFromAnnotationOrFallback(parameter)
-        } else super.resolveArgument(parameter, mavContainer, webRequest, binderFactory)
+            return if (directionParameter.size == 1 && !StringUtils.hasText(directionParameter[0]))
+                getDefaultFromAnnotationOrFallback(parameter)
+            else parseParameterIntoSort(directionParameter)
+        } else {
+            return super.resolveArgument(parameter, mavContainer, webRequest, binderFactory)
+        }
     }
 
     open fun parseParameterIntoSort(source: List<String>): Sort {
