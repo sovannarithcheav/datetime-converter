@@ -45,11 +45,14 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
                     parameter
                 )
             val directionParameter = result.map {
-                if (it.contains(propertyDelimiter)) {
-                    val splits = it.split(propertyDelimiter)
-                    (resource.getInternalSortKeyName(splits[0]) ?: it) + propertyDelimiter + splits[1]
+                val splitChar = propertyDelimiter
+                if (it.contains(splitChar)) {
+                    if (it.split(splitChar).size != 2) throw IllegalArgumentException("Only supports a single direction")
+                    val splits = it.split(splitChar)
+                    val key = resource.getInternalSortKeyName(splits[0])?.let {  "$it$splitChar${splits[1]}"}
+                    key ?: it
                 } else resource.getInternalSortKeyName(it) ?: it
-            }
+            }.distinct()
             return if (directionParameter.size == 1 && !StringUtils.hasText(directionParameter[0]))
                 getDefaultFromAnnotationOrFallback(parameter)
             else parseParameterIntoSort(directionParameter)
