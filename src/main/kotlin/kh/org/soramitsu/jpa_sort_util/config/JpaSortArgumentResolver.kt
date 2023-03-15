@@ -49,6 +49,7 @@ open class JpaSortArgumentResolver(private val applicationContext: ApplicationCo
                 if (it.contains(splitChar)) {
                     if (it.split(splitChar).size != 2) throw IllegalArgumentException("Only supports a single direction")
                     val splits = it.split(splitChar)
+                    if (Sort.Direction.fromOptionalString(splits[1]).isEmpty) throw IllegalArgumentException("Invalid direction")
                     val key = resource.getInternalSortKeyName(splits[0])?.let {  "$it$splitChar${splits[1]}"}
                     key ?: it
                 } else resource.getInternalSortKeyName(it) ?: it
