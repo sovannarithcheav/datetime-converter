@@ -1,6 +1,6 @@
-package kh.org.soramitsu.jpa_sort_util.config
+package kh.org.sovannarith.jpa_sort_util.config
 
-import kh.org.soramitsu.jpa_sort_util.helper.Extension.notOnlyDots
+import kh.org.sovannarith.jpa_sort_util.helper.Extension.notOnlyDots
 import org.springframework.data.domain.Sort
 import org.springframework.util.StringUtils
 import java.util.*

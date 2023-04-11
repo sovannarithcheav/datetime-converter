@@ -1,4 +1,4 @@
-package kh.org.soramitsu.jpa_sort_util.annotation
+package kh.org.sovannarith.jpa_sort_util.annotation
 
 import kotlin.reflect.KClass
 

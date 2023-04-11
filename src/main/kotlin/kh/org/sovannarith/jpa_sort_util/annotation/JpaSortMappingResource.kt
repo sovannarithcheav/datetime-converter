@@ -1,6 +1,6 @@
-package kh.org.soramitsu.jpa_sort_util.annotation
+package kh.org.sovannarith.jpa_sort_util.annotation
 
-import kh.org.soramitsu.jpa_sort_util.config.JpaSortArgumentResolverConfig
+import kh.org.sovannarith.jpa_sort_util.config.JpaSortArgumentResolverConfig
 import java.lang.reflect.ParameterizedType
 
 interface JpaSortMappingResource<T> {

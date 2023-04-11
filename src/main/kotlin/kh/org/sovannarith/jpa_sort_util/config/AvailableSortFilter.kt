@@ -1,6 +1,6 @@
-package kh.org.soramitsu.jpa_sort_util.config
+package kh.org.sovannarith.jpa_sort_util.config
 
-import kh.org.soramitsu.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
+import kh.org.sovannarith.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.context.request.RequestContextHolder
 import org.springframework.web.filter.OncePerRequestFilter

@@ -34,7 +34,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/soramitsukhmer/jpa-sort-util")
+			url = uri("https://maven.pkg.github.com/sovannarithcheav/jpa-sort-util")
 			credentials {
 				username = System.getenv("GIT_PUBLISH_USER")
 				password = System.getenv("GIT_PUBLISH_PASSWORD")

@@ -1,4 +1,4 @@
-package kh.org.soramitsu.jpa_sort_util.config
+package kh.org.sovannarith.jpa_sort_util.config
 
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Bean

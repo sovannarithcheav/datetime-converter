@@ -1,4 +1,4 @@
-package kh.org.soramitsu.jpa_sort_util.helper
+package kh.org.sovannarith.jpa_sort_util.helper
 
 import org.springframework.util.StringUtils
 

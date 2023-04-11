@@ -1,9 +1,9 @@
-package kh.org.soramitsu.jpa_sort_util.config
+package kh.org.sovannarith.jpa_sort_util.config
 
-import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMapping
-import kh.org.soramitsu.jpa_sort_util.annotation.JpaSortMappingResource
-import kh.org.soramitsu.jpa_sort_util.config.SortOrderParser.Companion.parse
-import kh.org.soramitsu.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
+import kh.org.sovannarith.jpa_sort_util.annotation.JpaSortMapping
+import kh.org.sovannarith.jpa_sort_util.annotation.JpaSortMappingResource
+import kh.org.sovannarith.jpa_sort_util.config.SortOrderParser.Companion.parse
+import kh.org.sovannarith.jpa_sort_util.helper.Constants.AVAILABLE_SORT_KEYS
 import org.springframework.context.ApplicationContext
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.MethodParameter
