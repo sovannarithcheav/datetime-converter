@@ -12,6 +12,7 @@ repositories {
 }
 
 dependencies {
+	compileOnly("com.fasterxml.jackson.module:jackson-module-kotlin:${property("jackson-module.version")}")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	implementation("org.springframework:spring-webmvc:${property("spring.version")}")
@@ -19,14 +20,13 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-configuration-processor:${property("spring-boot.version")}")
 	implementation("org.springframework.data:spring-data-commons:3.0.3")
 	compileOnly("javax.servlet:servlet-api:2.5")
-
 }
 
 publishing {
 	publications {
 		create<MavenPublication>("maven") {
 			groupId = project.properties["group"].toString()
-			artifactId = "jpa-sort-util"
+			artifactId = "datetime"
 			version = project.properties["version"].toString()
 			from(components["kotlin"])
 		}
@@ -34,7 +34,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/soramitsukhmer/jpa-sort-util")
+			url = uri("https://maven.pkg.github.com/sovannarithcheav/*")
 			credentials {
 				username = System.getenv("GIT_PUBLISH_USER")
 				password = System.getenv("GIT_PUBLISH_PASSWORD")

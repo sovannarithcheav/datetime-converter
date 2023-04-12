@@ -1,1 +1,1 @@
-rootProject.name = "jpa-sort-util"
+rootProject.name = "datetime-converter"
