@@ -5,7 +5,7 @@
 repositories {
     maven {
         name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/sovannarith/datetime-converter.git")
+        url = uri("https://maven.pkg.github.com/sovannarithcheav/datetime-converter.git")
         credentials {
             username = System.getenv("GIT_PUBLISH_USER")
             password = System.getenv("GIT_PUBLISH_PASSWORD")
@@ -16,6 +16,6 @@ repositories {
 2. Add dependency
 ```sh
 dependencies {
-  	implementation("kh.org.sovannarith:datetime-converter:${property("datetime-converter.version")}")
+  	implementation("kh.org.sovannarith:datetime:${property("datetime-converter.version")}")
 }
 ```
