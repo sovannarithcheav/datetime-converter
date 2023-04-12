@@ -16,6 +16,6 @@ repositories {
 2. Add dependency
 ```sh
 dependencies {
-  	implementation("kh.org.sovannarith:datetime:${property("datetime-converter.version")}")
+  	implementation("kh.org.sovannarith:datetime-converter:${property("datetime-converter.version")}")
 }
 ```

@@ -26,7 +26,7 @@ publishing {
 	publications {
 		create<MavenPublication>("maven") {
 			groupId = project.properties["group"].toString()
-			artifactId = "datetime"
+			artifactId = "datetime-converter"
 			version = project.properties["version"].toString()
 			from(components["kotlin"])
 		}
