@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
 	id("maven-publish")
 	kotlin("jvm") version "1.7.22"
@@ -26,7 +24,7 @@ publishing {
 	publications {
 		create<MavenPublication>("maven") {
 			groupId = project.properties["group"].toString()
-			artifactId = "datetime-converter"
+			artifactId = "datetime"
 			version = project.properties["version"].toString()
 			from(components["kotlin"])
 		}
@@ -34,7 +32,7 @@ publishing {
 	repositories {
 		maven {
 			name = "GitHubPackages"
-			url = uri("https://maven.pkg.github.com/sovannarithcheav/*")
+			url = uri("https://maven.pkg.github.com/sovannarithcheav/datetime-converter")
 			credentials {
 				username = System.getenv("GIT_PUBLISH_USER")
 				password = System.getenv("GIT_PUBLISH_PASSWORD")
